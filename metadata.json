@@ -1,0 +1,6 @@
+{
+  "name": "BIMAIhub",
+  "description": "BIMAIhub - Automation & AI for the AEC and BIM industry featuring ScriptedBIM and BIMAI. Launching Soon.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
