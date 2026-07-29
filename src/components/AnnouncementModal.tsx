@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Logo } from './Logo';
 import { Sparkles, ArrowRight, X, Zap, Bot, Clock } from 'lucide-react';
 
 interface AnnouncementModalProps {
@@ -78,10 +79,13 @@ export const AnnouncementModal: React.FC<AnnouncementModalProps> = ({
 
           {/* Heading */}
           <div className="space-y-2">
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-[#05131a] tracking-tight">
-              BIMAI<span className="text-[#0EA9BC]">hub</span> is Launching Soon
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
+            <div className="flex items-center justify-center gap-2.5">
+              <Logo size={32} />
+              <h2 className="text-2xl sm:text-4xl font-extrabold text-[#05131a] tracking-tight">
+                BIMAI<span className="text-[#0EA9BC]">hub</span>
+              </h2>
+            </div>
+            <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto leading-relaxed pt-1">
               Custom Whitelabel C# &amp; Python Revit Add-ins via <strong>ScriptedBIM</strong> and Company AI Chatbots &amp; Generators via <strong>BIMAI</strong>.
             </p>
           </div>

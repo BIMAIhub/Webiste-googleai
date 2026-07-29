@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Logo } from './Logo';
 import { X, Check, Send, Sparkles, Building2, Wrench, Bot } from 'lucide-react';
 
 interface ContactModalProps {
@@ -97,13 +98,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({
           </div>
         ) : (
           <div>
-            <div className="flex items-center gap-2 mb-2">
+            <div className="flex items-center gap-2 mb-3">
+              <Logo size={28} />
               <span className="bg-[#dceff3] text-[#0b3550] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-[#0EA9BC]" /> Launching Soon
               </span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#05131a] tracking-tight mb-1">
-              Join the BIMAIhub Early Access
+              Join the BIMAI<span className="text-[#0EA9BC]">hub</span> Early Access
             </h2>
             <p className="text-sm text-slate-600 mb-6">
               Be among the first AEC teams to automate repetitive BIM tasks &amp; unlock AI intelligence.
