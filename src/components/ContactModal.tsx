@@ -63,18 +63,18 @@ export const ContactModal: React.FC<ContactModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 backdrop-blur-md animate-in fade-in duration-200 overflow-y-auto">
       <div 
-        className="relative w-full max-w-xl bg-white/90 backdrop-blur-2xl rounded-3xl border border-white/80 shadow-2xl overflow-hidden p-6 sm:p-8"
+        className="relative w-full max-w-xl bg-white/95 backdrop-blur-2xl rounded-2xl sm:rounded-3xl border border-white/80 shadow-2xl overflow-hidden p-4 sm:p-8 max-h-[92vh] overflow-y-auto my-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-colors"
+          className="absolute top-4 right-4 sm:top-5 sm:right-5 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition-colors"
           aria-label="Close modal"
         >
-          <X className="w-5 h-5" />
+          <X className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
 
         {submitted ? (
@@ -115,39 +115,39 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                 <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
                   Interested Product
                 </label>
-                <div className="grid grid-cols-3 gap-2 p-1 bg-slate-100 rounded-2xl border border-slate-200">
+                <div className="grid grid-cols-1 xs:grid-cols-3 sm:grid-cols-3 gap-1.5 p-1 bg-slate-100 rounded-2xl border border-slate-200">
                   <button
                     type="button"
                     onClick={() => setProduct('ScriptedBIM')}
-                    className={`py-2 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
+                    className={`py-2 px-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
                       product === 'ScriptedBIM'
                         ? 'bg-white text-[#05131a] shadow-sm border border-slate-200'
                         : 'text-slate-600 hover:text-slate-900'
                     }`}
                   >
-                    <Wrench className="w-3.5 h-3.5 text-[#0EA9BC]" /> ScriptedBIM
+                    <Wrench className="w-3.5 h-3.5 text-[#0EA9BC] shrink-0" /> <span className="truncate">ScriptedBIM</span>
                   </button>
                   <button
                     type="button"
                     onClick={() => setProduct('BIMAI')}
-                    className={`py-2 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
+                    className={`py-2 px-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
                       product === 'BIMAI'
                         ? 'bg-white text-[#05131a] shadow-sm border border-slate-200'
                         : 'text-slate-600 hover:text-slate-900'
                     }`}
                   >
-                    <Bot className="w-3.5 h-3.5 text-[#0EA9BC]" /> BIMAI
+                    <Bot className="w-3.5 h-3.5 text-[#0EA9BC] shrink-0" /> <span className="truncate">BIMAI</span>
                   </button>
                   <button
                     type="button"
                     onClick={() => setProduct('General')}
-                    className={`py-2 px-3 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
+                    className={`py-2 px-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
                       product === 'General'
                         ? 'bg-white text-[#05131a] shadow-sm border border-slate-200'
                         : 'text-slate-600 hover:text-slate-900'
                     }`}
                   >
-                    <Building2 className="w-3.5 h-3.5 text-[#0EA9BC]" /> Both / Firm
+                    <Building2 className="w-3.5 h-3.5 text-[#0EA9BC] shrink-0" /> <span className="truncate">Both / Firm</span>
                   </button>
                 </div>
               </div>

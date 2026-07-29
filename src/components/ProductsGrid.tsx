@@ -14,21 +14,21 @@ export const ProductsGrid: React.FC<ProductsGridProps> = ({ onOpenContact }) => 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           
           {/* Column 1: Intro */}
-          <div className="p-8 flex flex-col justify-center bg-white/60 backdrop-blur-xl rounded-3xl border border-white/80 shadow-[0_8px_32px_rgba(0,0,0,0.02)]">
-            <h2 className="font-extrabold text-3xl sm:text-4xl leading-tight text-[#05131a] mb-4">
+          <div className="p-6 sm:p-8 flex flex-col justify-center bg-white/60 backdrop-blur-xl rounded-3xl border border-white/80 shadow-[0_8px_32px_rgba(0,0,0,0.02)]">
+            <h2 className="font-extrabold text-2xl sm:text-4xl leading-tight text-[#05131a] mb-4">
               Two products, one hub.
             </h2>
-            <p className="text-base text-slate-600 leading-relaxed mb-6">
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-6">
               Custom C# &amp; Python add-ins for problem-specific workflows + Firm-branded AI chatbots and generative BIM tools.
             </p>
-            <div className="p-4 bg-[#dceff3]/60 rounded-2xl border border-[#dceff3] text-xs text-[#0b3550] font-semibold flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#0EA9BC] animate-ping" />
+            <div className="p-3.5 sm:p-4 bg-[#dceff3]/60 rounded-2xl border border-[#dceff3] text-xs text-[#0b3550] font-semibold flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#0EA9BC] animate-ping shrink-0" />
               <span>Spots opening for custom pilot tools</span>
             </div>
           </div>
 
           {/* Column 2: ScriptedBIM Card */}
-          <div className="p-8 bg-white/60 backdrop-blur-xl rounded-3xl border border-white/80 shadow-[0_8px_32px_rgba(0,0,0,0.04)] flex flex-col relative overflow-hidden group hover:border-[#0EA9BC] transition-all">
+          <div className="p-6 sm:p-8 bg-white/60 backdrop-blur-xl rounded-3xl border border-white/80 shadow-[0_8px_32px_rgba(0,0,0,0.04)] flex flex-col relative overflow-hidden group hover:border-[#0EA9BC] transition-all">
             <div className="absolute inset-0 bg-gradient-to-b from-[#0EA9BC]/20 to-transparent -z-10" />
             
             <div className="flex items-center gap-2 mb-2">
@@ -75,7 +75,7 @@ export const ProductsGrid: React.FC<ProductsGridProps> = ({ onOpenContact }) => 
           </div>
 
           {/* Column 3: BIMAI Card */}
-          <div className="p-8 bg-white/60 backdrop-blur-xl rounded-3xl border border-white/80 shadow-[0_8px_32px_rgba(0,0,0,0.04)] flex flex-col relative overflow-hidden group hover:border-[#0EA9BC] transition-all">
+          <div className="p-6 sm:p-8 bg-white/60 backdrop-blur-xl rounded-3xl border border-white/80 shadow-[0_8px_32px_rgba(0,0,0,0.04)] flex flex-col relative overflow-hidden group hover:border-[#0EA9BC] transition-all">
             <div className="absolute inset-0 bg-gradient-to-b from-[#0B3550]/20 to-[#326578]/15 -z-10" />
             <div className="absolute top-4 right-4 bg-white/80 backdrop-blur-md border border-white text-[#05131a] text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
               AI Powered

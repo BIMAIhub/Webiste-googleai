@@ -43,12 +43,12 @@ export const AnnouncementModal: React.FC<AnnouncementModalProps> = ({
   const progressPercentage = (timeLeft / autoCloseSeconds) * 100;
 
   return (
-    <div className="fixed inset-0 z-[120] flex items-center justify-center p-4 bg-[#05131a]/60 backdrop-blur-sm transition-opacity duration-200">
+    <div className="fixed inset-0 z-[120] flex items-center justify-center p-3 sm:p-4 bg-[#05131a]/60 backdrop-blur-sm transition-opacity duration-200 overflow-y-auto">
       {/* Main Modal Box */}
       <div
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
-        className="relative w-full max-w-xl bg-white/95 backdrop-blur-2xl rounded-3xl border border-white/90 shadow-[0_20px_50px_rgba(0,0,0,0.12)] overflow-hidden p-6 sm:p-8 transition-all"
+        className="relative w-full max-w-xl bg-white/95 backdrop-blur-2xl rounded-2xl sm:rounded-3xl border border-white/90 shadow-[0_20px_50px_rgba(0,0,0,0.12)] overflow-hidden p-4 sm:p-8 max-h-[92vh] overflow-y-auto my-auto transition-all"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Auto-Close Progress Bar */}

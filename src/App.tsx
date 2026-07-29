@@ -29,7 +29,22 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-[#05131a] selection:bg-[#c9f3f7] selection:text-[#04414a] font-['Plus_Jakarta_Sans',sans-serif] overflow-x-hidden relative">
+    <div className="min-h-screen bg-[#f8fafc] text-[#05131a] selection:bg-[#c9f3f7] selection:text-[#04414a] font-['Plus_Jakarta_Sans',sans-serif] overflow-x-hidden relative">
+      {/* Full Page Continuous Seamless Background Mesh & Gradient */}
+      <div className="fixed inset-0 -z-20 pointer-events-none overflow-hidden">
+        {/* Continuous gradient fill */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#eaf6f8] via-[#f6fafb] via-40% to-[#e8f4f7]" />
+        
+        {/* Soft Glowing Background Orbs down the page */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1400px] h-[900px] bg-gradient-to-b from-[#0EA9BC]/18 via-[#326578]/8 to-transparent rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-[25%] left-[-10%] w-[1000px] h-[800px] bg-gradient-to-r from-[#0B3550]/12 to-[#0EA9BC]/6 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-[50%] right-[-10%] w-[1100px] h-[850px] bg-gradient-to-l from-[#0EA9BC]/14 to-[#326578]/8 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-[75%] left-1/2 -translate-x-1/2 w-[1300px] h-[800px] bg-gradient-to-t from-[#0B3550]/15 via-[#0EA9BC]/10 to-transparent rounded-full blur-3xl pointer-events-none" />
+        
+        {/* Architectural Dot Grid Overlay */}
+        <div className="absolute inset-0 bg-[radial-gradient(#0EA9BC_1px,transparent_1px)] [background-size:36px_36px] opacity-[0.06]" />
+      </div>
+
       {/* Dynamic Cursor Glow Following Light Effect */}
       <CursorGlow />
 
@@ -39,8 +54,8 @@ export default function App() {
         onOpenAnnouncement={() => setAnnouncementModalOpen(true)}
       />
 
-      {/* Main Content Sections */}
-      <main className="relative z-10 max-w-[1728px] mx-auto w-full box-border overflow-x-hidden">
+      {/* Main Content Sections - Full Width Container */}
+      <main className="relative z-10 w-full overflow-x-hidden">
         {/* Hero Section */}
         <Hero 
           onOpenContact={handleOpenContact} 

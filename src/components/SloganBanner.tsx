@@ -5,7 +5,7 @@ export const SloganBanner: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'traditional' | 'bimaihub'>('bimaihub');
 
   return (
-    <section className="py-20 sm:py-28 px-4 sm:px-8 bg-white relative overflow-hidden flex flex-col items-center justify-center">
+    <section className="py-20 sm:py-28 px-4 sm:px-8 bg-white/40 backdrop-blur-md relative overflow-hidden flex flex-col items-center justify-center w-full">
       {/* Background radial accent */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0EA9BC]/5 to-transparent pointer-events-none" />
 
