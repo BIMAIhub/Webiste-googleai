@@ -25,7 +25,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onOpenAnnouncement })
   return (
     <section 
       onMouseMove={handleMouseMove}
-      className="relative pt-28 sm:pt-44 lg:pt-52 pb-16 sm:pb-32 px-3.5 sm:px-8 min-h-[90vh] flex flex-col items-center justify-center text-center overflow-hidden w-full box-border"
+      className="relative pt-24 sm:pt-36 lg:pt-40 pb-16 sm:pb-28 px-3.5 sm:px-8 min-h-[85vh] flex flex-col items-center justify-center text-center overflow-hidden w-full box-border"
     >
       {/* Interactive Aura Radial Gradient Background */}
       <div 

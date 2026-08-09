@@ -56,7 +56,7 @@ export default function App() {
       />
 
       {/* Main Content Sections - Full Width Container */}
-      <main className="relative z-10 w-full overflow-x-hidden pt-20 sm:pt-24">
+      <main className="relative z-10 w-full overflow-x-hidden">
         {/* Hero Section */}
         <Hero 
           onOpenContact={handleOpenContact} 
