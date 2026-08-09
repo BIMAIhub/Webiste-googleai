@@ -8,26 +8,60 @@ export interface LeadData {
   timestamp?: string;
 }
 
-// Default or configured Google Apps Script Web App URL
-const DEFAULT_SCRIPT_URL = import.meta.env.VITE_GOOGLE_SCRIPT_URL || 'https://script.google.com/macros/s/AKfycbyvtYUnJBlNPH7-wB5pKnkrMCVf0wgLGWjID1UaTzVkiOctCNLGgsFs5Dho43Le90k/exec';
+// Default Google Apps Script Web App URL
+const DEFAULT_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzJphe3h0clwNPzf27bftxCLSIV-x2WfETQ4SDrLXW_E2t0mdUkNlS6U7v2vBrCy5w-vA/exec';
 
 export async function submitLeadToGoogleSheet(data: LeadData): Promise<{ success: boolean; message: string }> {
   const formattedDate = new Date().toLocaleString();
   const toolsString = data.selectedTools && data.selectedTools.length > 0 ? data.selectedTools.join(', ') : 'None specified';
 
-  const payload = {
-    Timestamp: formattedDate,
-    Name: data.name,
-    Email: data.email,
-    Company: data.company || 'N/A',
-    Product: data.product || 'General',
+  const nameVal = (data.name || '').trim() || 'Not Provided';
+  const emailVal = (data.email || '').trim() || 'Not Provided';
+  const companyVal = (data.company || '').trim() || 'N/A';
+  const productVal = data.product || 'General';
+  const messageVal = (data.message || '').trim() || 'No additional message';
+
+  const scriptUrl = import.meta.env.VITE_GOOGLE_SCRIPT_URL || DEFAULT_SCRIPT_URL;
+
+  // Ensure scriptUrl uses /exec instead of /dev (Google Apps Script /dev URLs block CORS & web submissions)
+  let cleanUrl = (scriptUrl || '').trim();
+  if (cleanUrl.endsWith('/dev')) {
+    cleanUrl = cleanUrl.replace(/\/dev$/, '/exec');
+  }
+
+  // Single comprehensive payload matching all field names in Google Apps Script
+  const payload: Record<string, string> = {
+    Name: nameVal,
+    name: nameVal,
+    fullName: nameVal,
+    'Your Name': nameVal,
+
+    Email: emailVal,
+    email: emailVal,
+    workEmail: emailVal,
+    'Work Email': emailVal,
+
+    Company: companyVal,
+    company: companyVal,
+    firm: companyVal,
+
+    Product: productVal,
+    product: productVal,
+    productInterest: productVal,
+
     'BIM Software': toolsString,
+    bimSoftware: toolsString,
     selectedTools: toolsString,
-    Message: data.message || 'No additional message',
-    timestamp: new Date().toISOString()
+
+    Message: messageVal,
+    message: messageVal,
+    automationNeeds: messageVal,
+
+    Timestamp: formattedDate,
+    timestamp: formattedDate
   };
 
-  // Always save locally in localStorage as a backup
+  // Backup in localStorage
   try {
     const existing = JSON.parse(localStorage.getItem('bimaihub_leads_backup') || '[]');
     existing.push(payload);
@@ -36,12 +70,18 @@ export async function submitLeadToGoogleSheet(data: LeadData): Promise<{ success
     console.warn('Could not save lead to localStorage', err);
   }
 
-  const scriptUrl = import.meta.env.VITE_GOOGLE_SCRIPT_URL || DEFAULT_SCRIPT_URL;
-
-  if (scriptUrl) {
+  if (cleanUrl) {
     try {
-      // Method 1: Send raw JSON with text/plain (Google Apps Script e.postData.contents)
-      await fetch(scriptUrl, {
+      // Build URL query string to guarantee e.parameter is populated
+      const params = new URLSearchParams();
+      Object.entries(payload).forEach(([k, v]) => params.append(k, v));
+
+      const targetUrl = cleanUrl.includes('?')
+        ? `${cleanUrl}&${params.toString()}`
+        : `${cleanUrl}?${params.toString()}`;
+
+      // Send POST request with query params (satisfies e.parameter) AND JSON body (satisfies e.postData.contents)
+      await fetch(targetUrl, {
         method: 'POST',
         mode: 'no-cors',
         headers: {
@@ -49,25 +89,6 @@ export async function submitLeadToGoogleSheet(data: LeadData): Promise<{ success
         },
         body: JSON.stringify(payload)
       });
-
-      // Method 2: Fallback URLSearchParams (Google Apps Script e.parameter)
-      const formData = new URLSearchParams();
-      formData.append('Timestamp', formattedDate);
-      formData.append('Name', data.name);
-      formData.append('Email', data.email);
-      formData.append('Company', data.company || 'N/A');
-      formData.append('Product', data.product || 'General');
-      formData.append('BIM Software', toolsString);
-      formData.append('Message', data.message || 'No additional message');
-
-      fetch(scriptUrl, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: formData.toString()
-      }).catch(() => {});
 
       return { success: true, message: 'Lead submitted successfully!' };
     } catch (error) {
@@ -78,3 +99,7 @@ export async function submitLeadToGoogleSheet(data: LeadData): Promise<{ success
 
   return { success: true, message: 'Lead recorded.' };
 }
+
+
+
+

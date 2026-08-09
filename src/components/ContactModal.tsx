@@ -194,6 +194,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                   <label className="block text-xs font-medium text-slate-700 mb-1">Your Name</label>
                   <input
                     type="text"
+                    name="name"
                     required
                     placeholder="Sarah Jenkins"
                     value={name}
@@ -205,6 +206,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                   <label className="block text-xs font-medium text-slate-700 mb-1">Work Email</label>
                   <input
                     type="email"
+                    name="email"
                     required
                     placeholder="sarah@architects.com"
                     value={email}
@@ -218,6 +220,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                 <label className="block text-xs font-medium text-slate-700 mb-1">Company / Firm Name (Optional)</label>
                 <input
                   type="text"
+                  name="company"
                   placeholder="AEC Solutions Studio"
                   value={company}
                   onChange={(e) => setCompany(e.target.value)}
