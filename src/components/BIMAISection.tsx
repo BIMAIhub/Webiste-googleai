@@ -74,15 +74,22 @@ export const BIMAISection: React.FC<BIMAISectionProps> = ({ onOpenContact }) => 
             </div>
           </div>
 
+          <div className="p-3 bg-cyan-50 rounded-2xl border border-cyan-200 mb-6 flex items-center justify-between text-xs text-cyan-950 font-bold">
+            <span className="flex items-center gap-1.5">
+              <span>📸</span> 11-Days Trial: AI Solutions (Image to Revit Family, Firm Chatbots &amp; Sheets AI)
+            </span>
+            <span className="text-[10px] bg-cyan-200 text-cyan-950 px-2 py-0.5 rounded-md uppercase">Free Trial</span>
+          </div>
+
           <div className="flex flex-wrap items-center gap-3">
             <button
-              onClick={() => onOpenContact('BIMAI')}
+              onClick={() => onOpenContact('BIMAI', 'We want to test an 11-Day Free Trial for AI Solutions (Image to Revit family & Firm Chatbot).')}
               className="inline-flex items-center justify-center gap-2 bg-[#05131a] hover:bg-slate-800 text-white font-bold px-7 py-3.5 rounded-2xl shadow-md hover:shadow-lg transition-all"
             >
-              <span>Explore Custom AI Tools</span>
-              <ArrowRight className="w-4 h-4" />
+              <span>Get 11-Day AI Solutions Trial</span>
+              <ArrowRight className="w-4 h-4 text-[#0EA9BC]" />
             </button>
-            <span className="text-xs text-slate-500 font-medium">Revit, Rhino, Grasshopper &amp; Sheets AI</span>
+            <span className="text-xs text-slate-500 font-medium">Image-to-Revit, Firm AI &amp; Sheets AI</span>
           </div>
         </div>
 

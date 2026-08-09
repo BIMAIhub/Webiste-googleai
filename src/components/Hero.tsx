@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, ArrowUp, Sparkles, Check, Send, Bot, Wrench, ShieldCheck } from 'lucide-react';
+import { Mail, ArrowUp, Sparkles, Check, Send, Bot, Wrench, ShieldCheck, Gift, ArrowRight } from 'lucide-react';
 
 interface HeroProps {
   onOpenContact: (defaultProduct?: 'ScriptedBIM' | 'BIMAI' | 'General', initialMessage?: string) => void;
@@ -41,19 +41,22 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContact, onOpenAnnouncement })
       {/* Decorative Grid overlay */}
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(#0EA9BC_1px,transparent_1px)] [background-size:32px_32px] opacity-[0.08]" />
 
-      {/* Launching Soon Interactive Badge */}
-      <button 
-        type="button"
-        onClick={onOpenAnnouncement}
-        className="inline-flex items-center gap-2 sm:gap-2.5 bg-white/70 hover:bg-white/90 backdrop-blur-xl border border-white/90 rounded-full px-3.5 sm:px-5 py-2 sm:py-2.5 mb-6 sm:mb-10 shadow-sm transition-all hover:scale-105 group cursor-pointer max-w-full"
-      >
-        <span className="bg-[#dceff3] text-[#0b3550] text-[10px] sm:text-sm font-extrabold px-2.5 sm:px-3 py-1 rounded-full uppercase tracking-wider flex items-center gap-1 sm:gap-1.5 shrink-0">
-          <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#0EA9BC]" /> Launching Soon
-        </span>
-        <span className="text-xs sm:text-base font-semibold text-[#05131a] group-hover:text-[#0EA9BC] transition-colors truncate">
-          Automation &amp; AI for AEC →
-        </span>
-      </button>
+      {/* Launching Soon & 11-Day Trial Interactive Badge */}
+      <div className="flex items-center justify-center mb-6 sm:mb-8 max-w-full px-2">
+        <button 
+          type="button"
+          onClick={() => onOpenContact('General', 'Requesting 11-Day Free Trial for custom company add-ins & AI solutions.')}
+          className="inline-flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 bg-gradient-to-r from-[#dceff3] via-white to-[#dceff3] hover:from-[#c9f3f7] hover:to-[#c9f3f7] backdrop-blur-xl border border-[#0EA9BC]/40 rounded-2xl sm:rounded-full px-4 sm:px-6 py-2.5 sm:py-2 shadow-sm transition-all hover:scale-[1.02] active:scale-95 group cursor-pointer max-w-full text-center sm:text-left"
+        >
+          <span className="bg-[#0EA9BC] text-white text-[10px] sm:text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider flex items-center gap-1.5 shrink-0 shadow-sm">
+            <Gift className="w-3.5 h-3.5" /> 11-DAYS FREE TRIAL
+          </span>
+          <span className="text-xs sm:text-sm font-extrabold text-[#05131a] group-hover:text-[#0EA9BC] transition-colors leading-tight flex items-center gap-1">
+            <span>Custom Add-ins &amp; AI Solutions <span className="hidden md:inline">(Image ➔ Revit Family)</span></span>
+            <span className="text-[#0EA9BC] group-hover:translate-x-0.5 transition-transform">→</span>
+          </span>
+        </button>
+      </div>
 
       {/* Main Headline */}
       <h1 className="font-extrabold text-3xl sm:text-7xl md:text-8xl lg:text-[5.5rem] leading-[1.08] sm:leading-[1.05] tracking-tighter text-[#05131a] max-w-5xl mb-5 sm:mb-8 px-1">

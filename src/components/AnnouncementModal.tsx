@@ -5,7 +5,7 @@ import { Sparkles, ArrowRight, X, Zap, Bot, Clock } from 'lucide-react';
 interface AnnouncementModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onOpenContact: (product?: 'ScriptedBIM' | 'BIMAI' | 'General') => void;
+  onOpenContact: (product?: 'ScriptedBIM' | 'BIMAI' | 'General' | '11-Day Trial', initialMessage?: string) => void;
   autoCloseSeconds?: number;
 }
 
@@ -113,14 +113,13 @@ export const AnnouncementModal: React.FC<AnnouncementModalProps> = ({
             </div>
           </div>
 
-          {/* Pilot Spots Banner */}
-          <div className="p-3 bg-[#dceff3]/60 rounded-xl border border-[#0EA9BC]/20 flex items-center justify-between text-xs font-medium text-[#04414a]">
+          {/* Pilot Spots & 11-Day Trial Banner */}
+          <div className="p-3 bg-[#dceff3]/90 rounded-xl border border-[#0EA9BC]/30 flex items-center justify-between text-xs font-bold text-[#0b3550]">
             <span className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-[#0EA9BC]" />
-              Private Early Access Pilot
+              <span>🎁</span> 11-Days Trial Available for Custom Add-ins &amp; AI
             </span>
-            <span className="font-mono font-bold bg-white px-2 py-0.5 rounded text-[#05131a] text-[11px] border border-slate-200">
-              18 / 50 Spots
+            <span className="font-mono bg-white px-2 py-0.5 rounded text-[#05131a] text-[11px] border border-[#0EA9BC]/20">
+              Free Trial
             </span>
           </div>
 
@@ -141,11 +140,11 @@ export const AnnouncementModal: React.FC<AnnouncementModalProps> = ({
             <button
               onClick={() => {
                 onClose();
-                onOpenContact('General');
+                onOpenContact('11-Day Trial', 'We want to connect for an 11-Day Free Trial for custom add-ins and AI solutions (Image to Revit family & more).');
               }}
               className="w-full sm:w-auto bg-[#0EA9BC] hover:bg-[#0EA9BC]/90 text-white font-bold text-xs sm:text-sm px-6 py-3 rounded-xl transition-all shadow-sm flex items-center justify-center gap-2"
             >
-              <span>Request Early Access</span>
+              <span>Connect for 11-Day Trial</span>
               <ArrowRight className="w-4 h-4" />
             </button>
 

@@ -6,7 +6,7 @@ import { submitLeadToGoogleSheet } from '../lib/leadService';
 interface ContactModalProps {
   isOpen: boolean;
   onClose: () => void;
-  defaultProduct?: 'ScriptedBIM' | 'BIMAI' | 'General';
+  defaultProduct?: 'ScriptedBIM' | 'BIMAI' | 'General' | '11-Day Trial';
   initialMessage?: string;
 }
 
@@ -28,7 +28,8 @@ export const ContactModal: React.FC<ContactModalProps> = ({
   defaultProduct = 'General',
   initialMessage = ''
 }) => {
-  const [product, setProduct] = useState<'ScriptedBIM' | 'BIMAI' | 'General'>(defaultProduct);
+  const [product, setProduct] = useState<'ScriptedBIM' | 'BIMAI' | 'General' | '11-Day Trial'>(defaultProduct);
+  const [isTrial, setIsTrial] = useState(defaultProduct === '11-Day Trial' || initialMessage.toLowerCase().includes('trial'));
   const [selectedTools, setSelectedTools] = useState<string[]>(['Autodesk Revit']);
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
@@ -120,70 +121,107 @@ export const ContactModal: React.FC<ContactModalProps> = ({
           </div>
         ) : (
           <div>
-            <div className="flex items-center justify-between gap-2 mb-3">
-              <div className="flex items-center gap-2">
-                <Logo size={28} />
-                <span className="bg-[#dceff3] text-[#0b3550] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5 text-[#0EA9BC]" /> Launching Soon
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-3 pr-8 sm:pr-10">
+              <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                <Logo size={26} />
+                <span className="bg-[#dceff3] text-[#0b3550] text-[10px] sm:text-xs font-bold px-2.5 py-0.5 sm:py-1 rounded-full uppercase tracking-wider inline-flex items-center gap-1">
+                  <Sparkles className="w-3 h-3 text-[#0EA9BC]" /> Launching Soon
                 </span>
               </div>
               <a
                 href="https://www.linkedin.com/company/www.bimaihub.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0A66C2] bg-[#0A66C2]/10 hover:bg-[#0A66C2]/20 px-2.5 py-1 rounded-full transition-colors"
+                className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-semibold text-[#0A66C2] bg-[#0A66C2]/10 hover:bg-[#0A66C2]/20 px-2.5 py-1 rounded-full transition-colors"
                 title="BIMAIhub on LinkedIn"
               >
-                <Linkedin className="w-3.5 h-3.5 fill-current" />
+                <Linkedin className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current" />
                 <span>LinkedIn</span>
               </a>
             </div>
+            {/* 11-Day Trial Banner Callout */}
+            <div className="mb-4 p-3 bg-gradient-to-r from-[#dceff3] to-cyan-50 rounded-2xl border border-[#0EA9BC]/30 flex flex-col xs:flex-row items-start xs:items-center justify-between gap-2.5 text-xs text-[#0b3550]">
+              <div className="flex items-start gap-2">
+                <span className="text-base shrink-0 mt-0.5">🎁</span>
+                <div>
+                  <span className="font-extrabold text-[#05131a] block text-xs sm:text-sm leading-tight">11-Days Free Trial Available</span>
+                  <span className="text-[11px] text-slate-700 leading-snug block mt-0.5">Custom Add-in for your company &amp; AI Solutions (Image to Revit Family, Chatbots, etc.)</span>
+                </div>
+              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  setIsTrial(true);
+                  if (product !== '11-Day Trial') setProduct('11-Day Trial');
+                }}
+                className={`w-full xs:w-auto px-3 py-1.5 rounded-xl font-bold text-[11px] transition-all whitespace-nowrap shadow-sm shrink-0 text-center ${
+                  isTrial
+                    ? 'bg-[#0EA9BC] text-white'
+                    : 'bg-white text-[#05131a] border border-slate-200 hover:bg-slate-50'
+                }`}
+              >
+                {isTrial ? '✓ Trial Selected' : 'Claim 11-Day Trial'}
+              </button>
+            </div>
+
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#05131a] tracking-tight mb-1">
               Join the BIMAI<span className="text-[#0EA9BC]">hub</span> Early Access
             </h2>
-            <p className="text-sm text-slate-600 mb-6">
-              Be among the first AEC teams to automate repetitive BIM tasks &amp; unlock AI intelligence.
+            <p className="text-sm text-slate-600 mb-5">
+              Be among the first AEC teams to automate repetitive BIM tasks &amp; test AI solutions risk-free.
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               {/* Product Preference Tabs */}
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                  Interested Product
+                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 flex items-center justify-between">
+                  <span>Interested Product / Request</span>
+                  <span className="text-[#0EA9BC] font-semibold text-[11px]">11-Day Free Trial Offered</span>
                 </label>
-                <div className="grid grid-cols-1 xs:grid-cols-3 sm:grid-cols-3 gap-1.5 p-1 bg-slate-100 rounded-2xl border border-slate-200">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 p-1 bg-slate-100 rounded-2xl border border-slate-200">
+                  <button
+                    type="button"
+                    onClick={() => { setProduct('11-Day Trial'); setIsTrial(true); }}
+                    className={`py-2 px-2 rounded-xl text-[11px] font-bold transition-all flex items-center justify-center gap-1 ${
+                      product === '11-Day Trial'
+                        ? 'bg-[#0EA9BC] text-white shadow-sm'
+                        : 'text-slate-700 hover:text-slate-900'
+                    }`}
+                  >
+                    <span>🎁 11-Day Trial</span>
+                  </button>
                   <button
                     type="button"
                     onClick={() => setProduct('ScriptedBIM')}
-                    className={`py-2 px-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
+                    className={`py-2 px-2 rounded-xl text-[11px] font-bold transition-all flex items-center justify-center gap-1 ${
                       product === 'ScriptedBIM'
                         ? 'bg-white text-[#05131a] shadow-sm border border-slate-200'
                         : 'text-slate-600 hover:text-slate-900'
                     }`}
                   >
-                    <Wrench className="w-3.5 h-3.5 text-[#0EA9BC] shrink-0" /> <span className="truncate">ScriptedBIM</span>
+                    <Wrench className="w-3 h-3 text-[#0EA9BC] shrink-0" /> <span className="truncate">Custom Add-in</span>
                   </button>
                   <button
                     type="button"
                     onClick={() => setProduct('BIMAI')}
-                    className={`py-2 px-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
+                    className={`py-2 px-2 rounded-xl text-[11px] font-bold transition-all flex items-center justify-center gap-1 ${
                       product === 'BIMAI'
                         ? 'bg-white text-[#05131a] shadow-sm border border-slate-200'
                         : 'text-slate-600 hover:text-slate-900'
                     }`}
                   >
-                    <Bot className="w-3.5 h-3.5 text-[#0EA9BC] shrink-0" /> <span className="truncate">BIMAI</span>
+                    <Bot className="w-3 h-3 text-[#0EA9BC] shrink-0" /> <span className="truncate">AI Solutions</span>
                   </button>
                   <button
                     type="button"
                     onClick={() => setProduct('General')}
-                    className={`py-2 px-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 ${
+                    className={`py-2 px-2 rounded-xl text-[11px] font-bold transition-all flex items-center justify-center gap-1 ${
                       product === 'General'
                         ? 'bg-white text-[#05131a] shadow-sm border border-slate-200'
                         : 'text-slate-600 hover:text-slate-900'
                     }`}
                   >
-                    <Building2 className="w-3.5 h-3.5 text-[#0EA9BC] shrink-0" /> <span className="truncate">Both / Firm</span>
+                    <Building2 className="w-3 h-3 text-[#0EA9BC] shrink-0" /> <span className="truncate">Both / Firm</span>
                   </button>
                 </div>
               </div>

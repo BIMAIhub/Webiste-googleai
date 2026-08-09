@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { TrialBanner } from './components/TrialBanner';
 import { SloganBanner } from './components/SloganBanner';
 import { ScriptedBIMSection } from './components/ScriptedBIMSection';
 import { BIMAISection } from './components/BIMAISection';
@@ -16,11 +17,11 @@ import { CursorGlow } from './components/CursorGlow';
 export default function App() {
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const [announcementModalOpen, setAnnouncementModalOpen] = useState(true);
-  const [modalDefaultProduct, setModalDefaultProduct] = useState<'ScriptedBIM' | 'BIMAI' | 'General'>('General');
+  const [modalDefaultProduct, setModalDefaultProduct] = useState<'ScriptedBIM' | 'BIMAI' | 'General' | '11-Day Trial'>('General');
   const [modalInitialMessage, setModalInitialMessage] = useState('');
 
   const handleOpenContact = (
-    defaultProduct: 'ScriptedBIM' | 'BIMAI' | 'General' = 'General',
+    defaultProduct: 'ScriptedBIM' | 'BIMAI' | 'General' | '11-Day Trial' = 'General',
     initialMessage: string = ''
   ) => {
     setModalDefaultProduct(defaultProduct);
@@ -55,12 +56,15 @@ export default function App() {
       />
 
       {/* Main Content Sections - Full Width Container */}
-      <main className="relative z-10 w-full overflow-x-hidden">
+      <main className="relative z-10 w-full overflow-x-hidden pt-20 sm:pt-24">
         {/* Hero Section */}
         <Hero 
           onOpenContact={handleOpenContact} 
           onOpenAnnouncement={() => setAnnouncementModalOpen(true)}
         />
+
+        {/* 11-Day Free Trial Highlight Banner */}
+        <TrialBanner onOpenContact={handleOpenContact} />
 
         {/* Slogan Banner */}
         <SloganBanner />

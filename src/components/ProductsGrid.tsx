@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, ArrowRight, Wrench, Bot, Building2 } from 'lucide-react';
+import { Check, ArrowRight, Wrench, Bot, Building2, Gift } from 'lucide-react';
 
 interface ProductsGridProps {
   onOpenContact: (defaultProduct?: 'ScriptedBIM' | 'BIMAI' | 'General') => void;
@@ -31,9 +31,14 @@ export const ProductsGrid: React.FC<ProductsGridProps> = ({ onOpenContact }) => 
           <div className="p-6 sm:p-8 bg-white/60 backdrop-blur-xl rounded-3xl border border-white/80 shadow-[0_8px_32px_rgba(0,0,0,0.04)] flex flex-col relative overflow-hidden group hover:border-[#0EA9BC] transition-all">
             <div className="absolute inset-0 bg-gradient-to-b from-[#0EA9BC]/20 to-transparent -z-10" />
             
-            <div className="flex items-center gap-2 mb-2">
-              <Wrench className="w-5 h-5 text-[#0EA9BC]" />
-              <span className="text-xs font-bold text-[#0b3550] uppercase tracking-wider">Custom Add-ins</span>
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2">
+                <Wrench className="w-5 h-5 text-[#0EA9BC]" />
+                <span className="text-xs font-bold text-[#0b3550] uppercase tracking-wider">Custom Add-ins</span>
+              </div>
+              <span className="bg-[#dceff3] text-[#0b3550] border border-[#0EA9BC]/30 text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase flex items-center gap-1">
+                <Gift className="w-3 h-3 text-[#0EA9BC]" /> 11-Day Trial
+              </span>
             </div>
 
             <h3 className="font-extrabold text-3xl text-[#05131a] mb-4">ScriptedBIM</h3>
@@ -61,15 +66,15 @@ export const ProductsGrid: React.FC<ProductsGridProps> = ({ onOpenContact }) => 
                 <div className="w-5 h-5 rounded-full bg-[#0EA9BC]/15 text-[#0EA9BC] flex items-center justify-center shrink-0">
                   <Check className="w-3.5 h-3.5 stroke-[3]" />
                 </div>
-                <span>Project-Specific &amp; Problem-Specific Tools</span>
+                <span>11-Day Free Trial Custom Company Add-in</span>
               </li>
             </ul>
 
             <button
-              onClick={() => onOpenContact('ScriptedBIM')}
+              onClick={() => onOpenContact('ScriptedBIM', 'We want to test an 11-Day Free Trial for a Custom Company Add-in.')}
               className="w-full text-center bg-white/80 backdrop-blur-md border border-white/80 shadow-sm text-[#05131a] rounded-2xl py-3.5 font-bold hover:bg-white hover:border-[#0EA9BC] transition-all flex items-center justify-center gap-2"
             >
-              <span>Build Custom Add-in</span>
+              <span>Get 11-Day Add-in Trial</span>
               <ArrowRight className="w-4 h-4 text-[#0EA9BC]" />
             </button>
           </div>
@@ -77,8 +82,8 @@ export const ProductsGrid: React.FC<ProductsGridProps> = ({ onOpenContact }) => 
           {/* Column 3: BIMAI Card */}
           <div className="p-6 sm:p-8 bg-white/60 backdrop-blur-xl rounded-3xl border border-white/80 shadow-[0_8px_32px_rgba(0,0,0,0.04)] flex flex-col relative overflow-hidden group hover:border-[#0EA9BC] transition-all">
             <div className="absolute inset-0 bg-gradient-to-b from-[#0B3550]/20 to-[#326578]/15 -z-10" />
-            <div className="absolute top-4 right-4 bg-white/80 backdrop-blur-md border border-white text-[#05131a] text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
-              AI Powered
+            <div className="absolute top-4 right-4 bg-[#dceff3] border border-[#0EA9BC]/30 text-[#0b3550] text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm flex items-center gap-1">
+              <Gift className="w-3 h-3 text-[#0EA9BC]" /> 11-Day AI Trial
             </div>
 
             <div className="flex items-center gap-2 mb-2">
@@ -111,15 +116,15 @@ export const ProductsGrid: React.FC<ProductsGridProps> = ({ onOpenContact }) => 
                 <div className="w-5 h-5 rounded-full bg-[#0EA9BC]/15 text-[#0EA9BC] flex items-center justify-center shrink-0">
                   <Check className="w-3.5 h-3.5 stroke-[3]" />
                 </div>
-                <span>2D CAD to 3D Model + Rhino &amp; DevOps AI</span>
+                <span>11-Day Free Trial for AI Tools Suite</span>
               </li>
             </ul>
 
             <button
-              onClick={() => onOpenContact('BIMAI')}
+              onClick={() => onOpenContact('BIMAI', 'We want to test an 11-Day Free Trial for AI Solutions (Image to Revit family & Firm Chatbot).')}
               className="w-full text-center bg-white/80 backdrop-blur-md border border-white/80 shadow-sm text-[#05131a] rounded-2xl py-3.5 font-bold hover:bg-white hover:border-[#0EA9BC] transition-all flex items-center justify-center gap-2"
             >
-              <span>Build Custom AI Tools</span>
+              <span>Get 11-Day AI Trial</span>
               <ArrowRight className="w-4 h-4 text-[#0EA9BC]" />
             </button>
           </div>

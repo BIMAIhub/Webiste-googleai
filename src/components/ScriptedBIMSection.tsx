@@ -47,12 +47,19 @@ export const ScriptedBIMSection: React.FC<ScriptedBIMSectionProps> = ({ onOpenCo
             ))}
           </div>
 
+          <div className="p-3 bg-cyan-50 rounded-2xl border border-cyan-200 mb-6 flex items-center justify-between text-xs text-cyan-950 font-bold">
+            <span className="flex items-center gap-1.5">
+              <span>🎁</span> 11-Days Free Trial: Custom Add-in for your company
+            </span>
+            <span className="text-[10px] bg-cyan-200 text-cyan-950 px-2 py-0.5 rounded-md uppercase">Zero Cost</span>
+          </div>
+
           <div className="flex flex-wrap items-center gap-3">
             <button
-              onClick={() => onOpenContact('ScriptedBIM')}
+              onClick={() => onOpenContact('ScriptedBIM', 'We want to test an 11-Day Free Trial for a Custom Company Add-in.')}
               className="inline-flex items-center justify-center gap-2 bg-[#0EA9BC] hover:bg-[#0EA9BC]/90 text-white font-bold px-7 py-3.5 rounded-2xl shadow-md hover:shadow-lg transition-all"
             >
-              <span>Request Custom Add-in</span>
+              <span>Request 11-Day Add-in Trial</span>
               <ArrowRight className="w-4 h-4" />
             </button>
             <span className="text-xs text-slate-500 font-medium">C#, Python, Revit API &amp; pyRevit</span>
