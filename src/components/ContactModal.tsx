@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Logo } from './Logo';
-import { X, Check, Send, Sparkles, Building2, Wrench, Bot } from 'lucide-react';
+import { X, Check, Send, Sparkles, Building2, Wrench, Bot, Linkedin } from 'lucide-react';
+import { submitLeadToGoogleSheet } from '../lib/leadService';
 
 interface ContactModalProps {
   isOpen: boolean;
@@ -44,14 +45,26 @@ export const ContactModal: React.FC<ContactModalProps> = ({
     );
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
     setIsSubmitting(true);
-    setTimeout(() => {
+    
+    try {
+      await submitLeadToGoogleSheet({
+        name,
+        email,
+        company,
+        product,
+        selectedTools,
+        message
+      });
+    } catch (err) {
+      console.error('Submission handled', err);
+    } finally {
       setIsSubmitting(false);
       setSubmitted(true);
-    }, 800);
+    }
   };
 
   const resetForm = () => {
@@ -87,22 +100,43 @@ export const ContactModal: React.FC<ContactModalProps> = ({
             <p className="text-slate-600 max-w-md mx-auto text-sm leading-relaxed">
               Thanks for reaching out, {name || 'there'}! We've reserved your spot for <strong>{product === 'General' ? 'BIMAIhub' : product}</strong>. Our engineering team will contact you at <span className="text-[#0EA9BC] font-semibold">{email}</span> soon.
             </p>
-            <div className="pt-4">
+            <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
               <button
                 onClick={resetForm}
-                className="bg-[#0EA9BC] hover:bg-[#0EA9BC]/90 text-white font-medium px-8 py-3 rounded-full transition-colors shadow-sm"
+                className="bg-[#0EA9BC] hover:bg-[#0EA9BC]/90 text-white font-medium px-8 py-3 rounded-full transition-colors shadow-sm w-full sm:w-auto"
               >
                 Back to Website
               </button>
+              <a
+                href="https://www.linkedin.com/company/www.bimaihub.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#0A66C2] hover:bg-[#084e96] text-white font-medium px-6 py-3 rounded-full transition-colors shadow-sm flex items-center justify-center gap-2 w-full sm:w-auto"
+              >
+                <Linkedin className="w-4 h-4 fill-current" />
+                <span>Follow on LinkedIn</span>
+              </a>
             </div>
           </div>
         ) : (
           <div>
-            <div className="flex items-center gap-2 mb-3">
-              <Logo size={28} />
-              <span className="bg-[#dceff3] text-[#0b3550] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5 text-[#0EA9BC]" /> Launching Soon
-              </span>
+            <div className="flex items-center justify-between gap-2 mb-3">
+              <div className="flex items-center gap-2">
+                <Logo size={28} />
+                <span className="bg-[#dceff3] text-[#0b3550] text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider inline-flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5 text-[#0EA9BC]" /> Launching Soon
+                </span>
+              </div>
+              <a
+                href="https://www.linkedin.com/company/www.bimaihub.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0A66C2] bg-[#0A66C2]/10 hover:bg-[#0A66C2]/20 px-2.5 py-1 rounded-full transition-colors"
+                title="BIMAIhub on LinkedIn"
+              >
+                <Linkedin className="w-3.5 h-3.5 fill-current" />
+                <span>LinkedIn</span>
+              </a>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#05131a] tracking-tight mb-1">
               Join the BIMAI<span className="text-[#0EA9BC]">hub</span> Early Access

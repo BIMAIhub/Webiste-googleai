@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Logo } from './Logo';
-import { Menu, X, Mail, Sparkles, ArrowRight } from 'lucide-react';
+import { Menu, X, Mail, Sparkles, ArrowRight, Linkedin } from 'lucide-react';
 
 interface NavbarProps {
   onOpenContact: (defaultProduct?: 'ScriptedBIM' | 'BIMAI' | 'General') => void;
@@ -56,6 +56,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact, onOpenAnnouncemen
 
       {/* Desktop Actions */}
       <div className="hidden sm:flex items-center gap-2.5">
+        <a
+          href="https://www.linkedin.com/company/www.bimaihub.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="p-2 text-[#0A66C2] hover:bg-[#0A66C2]/10 rounded-full transition-all border border-slate-200/60 bg-white/50"
+          title="BIMAIhub on LinkedIn"
+          aria-label="BIMAIhub LinkedIn Page"
+        >
+          <Linkedin className="w-4 h-4 fill-current" />
+        </a>
         <button
           onClick={onOpenAnnouncement}
           className="hidden lg:inline-flex items-center gap-1.5 bg-[#dceff3] hover:bg-[#c9f3f7] text-[#0b3550] text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider transition-all hover:scale-105"
@@ -126,6 +136,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenContact, onOpenAnnouncemen
             className="text-slate-700 font-medium text-base py-2 px-3 rounded-xl hover:bg-slate-50"
           >
             FAQ
+          </a>
+          <a
+            href="https://www.linkedin.com/company/www.bimaihub.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-[#0A66C2] font-semibold text-base py-2 px-3 rounded-xl hover:bg-slate-50 flex items-center gap-2"
+          >
+            <Linkedin className="w-5 h-5 fill-current" />
+            <span>Follow BIMAIhub on LinkedIn</span>
           </a>
           <hr className="border-slate-100 my-1" />
           <button

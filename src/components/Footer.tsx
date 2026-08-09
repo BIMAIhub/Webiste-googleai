@@ -1,5 +1,6 @@
 import React from 'react';
 import { Logo } from './Logo';
+import { Linkedin } from 'lucide-react';
 
 interface FooterProps {
   onOpenContact: () => void;
@@ -37,6 +38,15 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
           </a>
           <a href="#faq" className="hover:text-[#0EA9BC] transition-colors">
             FAQ
+          </a>
+          <a
+            href="https://www.linkedin.com/company/www.bimaihub.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 text-[#0A66C2] hover:text-[#0077B5] bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-full transition-all border border-white/10"
+          >
+            <Linkedin className="w-4 h-4 text-[#0A66C2]" />
+            <span className="text-xs font-semibold text-white">LinkedIn Page</span>
           </a>
         </div>
 
