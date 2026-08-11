@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Play, CheckCircle, ArrowRight, Zap, Code2, Palette, ShieldCheck, Cpu } from 'lucide-react';
+import { motion } from 'motion/react';
 
 interface ScriptedBIMSectionProps {
   onOpenContact: (defaultProduct?: 'ScriptedBIM' | 'BIMAI' | 'General') => void;
@@ -16,8 +17,14 @@ export const ScriptedBIMSection: React.FC<ScriptedBIMSectionProps> = ({ onOpenCo
   const [selectedCompanyTheme, setSelectedCompanyTheme] = useState<'AEC Global' | 'Architects Studio' | 'Custom Firm'>('AEC Global');
 
   return (
-    <section id="scriptedbim" className="pt-20 sm:pt-28 pb-10 px-4 sm:px-8 relative">
-      <div className="max-w-[1120px] mx-auto bg-white/60 backdrop-blur-2xl rounded-3xl border border-white/80 shadow-[0_12px_40px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col lg:flex-row min-h-[600px]">
+    <section id="scriptedbim" className="pt-20 sm:pt-28 pb-10 px-4 sm:px-8 relative scroll-mt-28 sm:scroll-mt-32">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-60px' }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+        className="max-w-[1120px] mx-auto bg-white/60 backdrop-blur-2xl rounded-3xl border border-white/80 shadow-[0_12px_40px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col lg:flex-row min-h-[600px]"
+      >
         
         {/* Left Information Column */}
         <div className="p-8 sm:p-12 lg:w-1/2 flex flex-col justify-center">
@@ -208,7 +215,7 @@ export const ScriptedBIMSection: React.FC<ScriptedBIMSectionProps> = ({ onOpenCo
 
         </div>
 
-      </div>
+      </motion.div>
     </section>
   );
 };

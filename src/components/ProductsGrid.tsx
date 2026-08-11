@@ -1,5 +1,6 @@
 import React from 'react';
 import { Check, ArrowRight, Wrench, Bot, Building2, Gift } from 'lucide-react';
+import { motion } from 'motion/react';
 
 interface ProductsGridProps {
   onOpenContact: (defaultProduct?: 'ScriptedBIM' | 'BIMAI' | 'General') => void;
@@ -7,8 +8,14 @@ interface ProductsGridProps {
 
 export const ProductsGrid: React.FC<ProductsGridProps> = ({ onOpenContact }) => {
   return (
-    <section id="products" className="py-20 sm:py-28 px-4 sm:px-8">
-      <div className="max-w-[1280px] mx-auto relative z-10 space-y-8">
+    <section id="products" className="py-20 sm:py-28 px-4 sm:px-8 scroll-mt-28 sm:scroll-mt-32">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-60px' }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+        className="max-w-[1280px] mx-auto relative z-10 space-y-8"
+      >
         
         {/* Main 3 Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
@@ -152,7 +159,7 @@ export const ProductsGrid: React.FC<ProductsGridProps> = ({ onOpenContact }) => 
           </button>
         </div>
 
-      </div>
+      </motion.div>
     </section>
   );
 };

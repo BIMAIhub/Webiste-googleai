@@ -8,6 +8,9 @@ import { BIMAISection } from './components/BIMAISection';
 import { ShowcaseCarousel } from './components/ShowcaseCarousel';
 import { ProductsGrid } from './components/ProductsGrid';
 import { FAQSection } from './components/FAQSection';
+import { ServicesSection } from './components/ServicesSection';
+import { AboutSection } from './components/AboutSection';
+import { CareersSection } from './components/CareersSection';
 import { CTASection } from './components/CTASection';
 import { Footer } from './components/Footer';
 import { ContactModal } from './components/ContactModal';
@@ -69,6 +72,15 @@ export default function App() {
         {/* Slogan Banner */}
         <SloganBanner />
 
+        {/* 1. About Us (R&D Startup) Section */}
+        <AboutSection onOpenContact={handleOpenContact} />
+
+        {/* 2. Services & Training Section */}
+        <ServicesSection onOpenContact={handleOpenContact} />
+
+        {/* 3. Products Grid */}
+        <ProductsGrid onOpenContact={handleOpenContact} />
+
         {/* Feature 01: ScriptedBIM */}
         <ScriptedBIMSection onOpenContact={handleOpenContact} />
 
@@ -78,10 +90,10 @@ export default function App() {
         {/* Workflow Showcase Carousel */}
         <ShowcaseCarousel onOpenContact={handleOpenContact} />
 
-        {/* Products Grid */}
-        <ProductsGrid onOpenContact={handleOpenContact} />
+        {/* 4. Careers & Internships Section */}
+        <CareersSection onOpenContact={handleOpenContact} />
 
-        {/* FAQ Section */}
+        {/* 5. FAQ Section */}
         <FAQSection />
 
         {/* Final CTA */}

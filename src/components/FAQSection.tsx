@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Plus, Minus, HelpCircle } from 'lucide-react';
+import { motion } from 'motion/react';
 
 interface FAQItem {
   id: string;
@@ -48,8 +49,14 @@ export const FAQSection: React.FC = () => {
   };
 
   return (
-    <section id="faq" className="py-20 sm:py-28 px-4 sm:px-8 bg-white border-t border-slate-100">
-      <div className="max-w-[1280px] mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16">
+    <section id="faq" className="py-20 sm:py-28 px-4 sm:px-8 bg-white border-t border-slate-100 scroll-mt-28 sm:scroll-mt-32">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-60px' }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+        className="max-w-[1280px] mx-auto flex flex-col lg:flex-row gap-12 lg:gap-16"
+      >
         
         {/* Left Sticky Header */}
         <div className="lg:w-1/3">
@@ -98,7 +105,7 @@ export const FAQSection: React.FC = () => {
           })}
         </div>
 
-      </div>
+      </motion.div>
     </section>
   );
 };

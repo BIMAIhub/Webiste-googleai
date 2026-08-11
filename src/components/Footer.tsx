@@ -20,13 +20,13 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
         </a>
 
         {/* Links */}
-        <div className="flex flex-wrap items-center justify-center gap-6 text-sm font-medium">
-          <button 
-            onClick={onOpenContact} 
-            className="hover:text-[#0EA9BC] transition-colors"
-          >
-            Contact
-          </button>
+        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm font-medium">
+          <a href="#about" className="hover:text-[#0EA9BC] transition-colors">
+            About Us
+          </a>
+          <a href="#services" className="hover:text-[#0EA9BC] transition-colors">
+            Services
+          </a>
           <a href="#products" className="hover:text-[#0EA9BC] transition-colors">
             Products
           </a>
@@ -36,8 +36,14 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
           <a href="#bimai" className="hover:text-[#0EA9BC] transition-colors">
             BIMAI
           </a>
-          <a href="#faq" className="hover:text-[#0EA9BC] transition-colors">
-            FAQ
+          <a href="#careers" className="hover:text-[#0EA9BC] transition-colors">
+            Careers &amp; Internships
+          </a>
+          <a href="mailto:hr@bimaihub.com?subject=Job%20or%20Internship%20Inquiry" className="text-cyan-400 hover:underline transition-colors">
+            Jobs &amp; Internships: hr@bimaihub.com
+          </a>
+          <a href="mailto:info@pragmaticbim.info?subject=BIM%20%26%20Automation%20Training%20Inquiry" className="text-slate-300 hover:text-cyan-300 transition-colors">
+            Training: info@pragmaticbim.info
           </a>
           <a
             href="https://www.linkedin.com/company/www.bimaihub.com"
@@ -46,7 +52,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
             className="flex items-center gap-1.5 text-[#0A66C2] hover:text-[#0077B5] bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-full transition-all border border-white/10"
           >
             <Linkedin className="w-4 h-4 text-[#0A66C2]" />
-            <span className="text-xs font-semibold text-white">LinkedIn Page</span>
+            <span className="text-xs font-semibold text-white">LinkedIn</span>
           </a>
         </div>
 

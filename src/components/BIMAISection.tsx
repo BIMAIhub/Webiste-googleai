@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Bot, Sparkles, BrainCircuit, ArrowRight, Image as ImageIcon, FileCheck, Layers, Terminal, MessageSquareCode } from 'lucide-react';
+import { motion } from 'motion/react';
 
 interface BIMAISectionProps {
   onOpenContact: (defaultProduct?: 'ScriptedBIM' | 'BIMAI' | 'General') => void;
@@ -42,8 +43,14 @@ export const BIMAISection: React.FC<BIMAISectionProps> = ({ onOpenContact }) => 
   };
 
   return (
-    <section id="bimai" className="pt-10 pb-20 sm:pb-28 px-4 sm:px-8 relative">
-      <div className="max-w-[1120px] mx-auto bg-white/60 backdrop-blur-2xl rounded-3xl border border-white/80 shadow-[0_12px_40px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col lg:flex-row min-h-[620px]">
+    <section id="bimai" className="pt-10 pb-20 sm:pb-28 px-4 sm:px-8 relative scroll-mt-28 sm:scroll-mt-32">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-60px' }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+        className="max-w-[1120px] mx-auto bg-white/60 backdrop-blur-2xl rounded-3xl border border-white/80 shadow-[0_12px_40px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col lg:flex-row min-h-[620px]"
+      >
         
         {/* Left Information Column */}
         <div className="p-8 sm:p-12 lg:w-1/2 flex flex-col justify-center">
@@ -178,7 +185,7 @@ export const BIMAISection: React.FC<BIMAISectionProps> = ({ onOpenContact }) => 
 
         </div>
 
-      </div>
+      </motion.div>
     </section>
   );
 };
