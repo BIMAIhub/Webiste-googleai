@@ -25,7 +25,7 @@ export const CareersSection: React.FC<CareersSectionProps> = ({ onOpenContact })
       description: 'Develop generative models, image-to-3D element reconstruction algorithms, and intelligent LLM BIM agents.'
     },
     {
-      title: 'Senior BIM Specialist / Modeler',
+      title: 'BIM Modeler',
       type: 'Full-time Job',
       department: 'BIM Operations',
       icon: Code,
@@ -33,12 +33,12 @@ export const CareersSection: React.FC<CareersSectionProps> = ({ onOpenContact })
       description: 'Lead high-complexity 3D modeling, clash resolution, parametric family architecture, and workflow quality auditing.'
     },
     {
-      title: 'BIM & Automation R&D Internship',
+      title: 'Social Media Intern',
       type: 'Internship Role',
-      department: 'Research & Development',
+      department: 'Marketing & Digital Media',
       icon: GraduationCap,
       isInternship: true,
-      description: 'Dedicated internship program for passionate AEC students, graduates, or software enthusiasts eager to research and solve real-world BIM workflow challenges.'
+      description: 'Dedicated internship position for creative students and graduates eager to manage social media channels, create engaging AEC content, and grow digital community outreach.'
     }
   ];
 
@@ -57,7 +57,7 @@ export const CareersSection: React.FC<CareersSectionProps> = ({ onOpenContact })
           <span>Jobs &amp; Internship Opportunities</span>
         </div>
         <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-[#05131a] mb-4">
-          Careers &amp; Internships at BIMAIhub
+          Careers at BIMAIhub
         </h2>
         <p className="text-base sm:text-lg text-slate-600 font-medium">
           Shape the future of BIM automation, computational geometry, and AI in the AEC industry. We welcome both experienced professionals and enthusiastic interns!

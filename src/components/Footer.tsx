@@ -37,13 +37,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
             BIMAI
           </a>
           <a href="#careers" className="hover:text-[#0EA9BC] transition-colors">
-            Careers &amp; Internships
-          </a>
-          <a href="mailto:hr@bimaihub.com?subject=Job%20or%20Internship%20Inquiry" className="text-cyan-400 hover:underline transition-colors">
-            Jobs &amp; Internships: hr@bimaihub.com
-          </a>
-          <a href="mailto:info@pragmaticbim.info?subject=BIM%20%26%20Automation%20Training%20Inquiry" className="text-slate-300 hover:text-cyan-300 transition-colors">
-            Training: info@pragmaticbim.info
+            Careers
           </a>
           <a
             href="https://www.linkedin.com/company/www.bimaihub.com"
