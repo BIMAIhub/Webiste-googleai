@@ -13,6 +13,7 @@ import { AboutSection } from './components/AboutSection';
 import { CareersSection } from './components/CareersSection';
 import { CTASection } from './components/CTASection';
 import { Footer } from './components/Footer';
+import { AdSenseBanner } from './components/AdSenseBanner';
 import { ContactModal } from './components/ContactModal';
 import { AnnouncementModal } from './components/AnnouncementModal';
 import { CursorGlow } from './components/CursorGlow';
@@ -98,6 +99,9 @@ export default function App() {
 
         {/* Final CTA */}
         <CTASection onOpenContact={handleOpenContact} />
+
+        {/* Google AdSense Unit */}
+        <AdSenseBanner />
       </main>
 
       {/* Footer */}
