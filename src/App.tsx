@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { TrialBanner } from './components/TrialBanner';
@@ -121,6 +122,9 @@ export default function App() {
         defaultProduct={modalDefaultProduct}
         initialMessage={modalInitialMessage}
       />
+
+      {/* Vercel Speed Insights */}
+      <SpeedInsights />
     </div>
   );
 }
